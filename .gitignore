@@ -1,11 +1,6 @@
 # Node.js
 node_modules/
 
-# TypeScript
-*.js
-*.js.map
-*.d.ts
-
 # IDE/Editor specific
 .vscode/
 .idea/
