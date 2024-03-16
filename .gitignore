@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# TypeScript
+*.js
+*.js.map
+*.d.ts
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Dependency directories
+.env
+
+# Build output
+dist/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
