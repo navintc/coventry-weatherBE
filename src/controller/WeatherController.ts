@@ -1,11 +1,14 @@
 import { RequestHandler } from "express";
 import { WeatherModel } from "../models/WeatherModel";
 
+
+//in this code, each CRUD operations are declared expect for update
+//I did not add 'update' beacuse in this app it should not be allowed. 
 export const createWeather: RequestHandler = async (req, res, next) => {
     var weather = await WeatherModel.create({...req.body });
     return res
         .status(200)
-        .json({message: "Todo ceated successfully", data: weather});
+        .json({message: "Weather entry ceated successfully", data: weather});
 };
 
 export const deleteWeather:RequestHandler = async(req, res, next) => {
