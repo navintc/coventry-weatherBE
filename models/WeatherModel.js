@@ -8,8 +8,14 @@ const WeatherModel = sequelize.define('Weather',{
             max:20
         }
     },
-    locID:{
+    locid:{
         type:DataTypes.NUMBER,
+    },
+    lon:{
+        type:DataTypes.FLOAT,
+    },
+    lat:{
+        type:DataTypes.FLOAT,
     },
     humidity:{
         type:DataTypes.FLOAT,
@@ -17,7 +23,7 @@ const WeatherModel = sequelize.define('Weather',{
     temperature:{
         type:DataTypes.FLOAT,
     },
-    airPressure:{
+    airpressure:{
         type:DataTypes.FLOAT,
     },
     content:{

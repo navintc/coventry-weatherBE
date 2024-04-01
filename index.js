@@ -4,7 +4,7 @@ const {sequelize,connectToDb} = require('./database/Database');
 const body_parser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.json());
 app.use('/api',apiRoutes);

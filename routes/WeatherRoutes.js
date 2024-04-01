@@ -11,16 +11,18 @@ router.get('/weather', async(request,response)=>{
 });
 
 router.post('/weather', async (request,response)=>{
-    const {location, locID, humidity, temperature,
-        airPressure, content} = request.body;
+    const {location, locid, lat, lon, humidity, temperature,
+        airpressure, content} = request.body;
 
     const newWeatherData = WeatherModel.build({
         'location':location,
-        'locID':locID,
+        'locid':locid,
+        'lat':lat,
+        'lon':lon,
         'content':content,
         'humidity':humidity,
         'temperature':temperature,
-        'airPressure':airPressure,
+        'airpressure':airpressure,
         'content':content 
     })
 
