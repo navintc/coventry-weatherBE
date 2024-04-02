@@ -9,8 +9,6 @@ const PORT = 3001;
 app.use(express.json());
 app.use('/api',apiRoutes);
 
-
-
 app.use((request,response)=>{
     response.status(404);
     response.json({message:"404: Not found"});
