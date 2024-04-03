@@ -5,10 +5,16 @@ const Redis = require('ioredis');
 
 const redis = new Redis({
     host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT, // default port for Redis
-    password: process.env.REDIS_PW,
-    // other options if needed
+    port: process.env.REDIS_PORT,
+    password: process.env.REDIS_PW
 });
+
+async function emitAllData(io) {
+    const keys = await redis.keys('*');
+    const values = await Promise.all(keys.map(key => redis.get(key)));
+    const allData = values.map(value => JSON.parse(value));
+    io.emit('weather data', allData);
+}
 
 router.get('/weather', async(request,response)=>{
     const weatherData = await WeatherModel.findAll();
@@ -35,11 +41,14 @@ router.post('/weather', async (request, response) => {
         // Save to Redis with locid as the key, the value should be stringified JSON
         await redis.set(locid, JSON.stringify(weatherData));
 
-        // Build and save the new weather data to your database
+        // Build and save the new weather data to database
         const newWeatherData = WeatherModel.build(weatherData);
-        const savedData = await newWeatherData.save();
+        await newWeatherData.save();
 
-        response.status(201).json(savedData);
+        // Emit the updated data after a successful save
+        await emitAllData(request.io);
+
+        response.status(201).json(newWeatherData);
 
     } catch (error) {
         console.error(error);
