@@ -1,3 +1,8 @@
+# Navin Thamindu Chandrasiri
+## NIBM Index: COBSCCOMP4Y222-050
+### CU Index: 13865911
+
+
 ### .env file should be added and the folowing values should be given
 
 DB_HOST = *localhost
