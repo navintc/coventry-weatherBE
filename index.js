@@ -12,7 +12,7 @@ const redis = new Redis({
 });
 
 const app = express();
-const PORT = 3001;
+const PORT = 80;
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
